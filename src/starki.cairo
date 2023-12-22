@@ -1,6 +1,6 @@
 #[starknet::interface]
 trait IStarki<TContractState> {
-    fn Inscribe(ref self: TContractState, user_data: Array::<felt252>) -> u8;
+    fn inscribe(ref self: TContractState, user_data: Array::<felt252>) -> u8;
 }
 
 #[starknet::contract]
@@ -77,7 +77,7 @@ mod Starki {
 
     #[external(v0)]
     impl Starki of super::IStarki<ContractState> {
-        fn Inscribe(ref self: ContractState, user_data: Array::<felt252>) -> u8 {
+        fn inscribe(ref self: ContractState, user_data: Array::<felt252>) -> u8 {
             let caller = get_caller_address();
             self
                 .emit(
